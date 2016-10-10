@@ -73,6 +73,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rn.Core, Version=1.0.0.107, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rn.Core.1.0.0.107\lib\net45\Rn.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -148,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Castle\CastleHelper.cs" />
+    <Compile Include="Castle\Installers\ServiceInstaller.cs" />
     <Compile Include="Castle\Installers\WebApiControllerInstaller.cs" />
     <Compile Include="Castle\WindsorDependencyScope.cs" />
     <Compile Include="Castle\WindsorHttpDependencyResolver.cs" />
@@ -174,13 +179,13 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <None Include="Scripts\jquery-3.1.0.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.1.0.js" />
-    <Content Include="Scripts\jquery-3.1.0.min.js" />
-    <Content Include="Scripts\jquery-3.1.0.slim.js" />
-    <Content Include="Scripts\jquery-3.1.0.slim.min.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -210,8 +215,8 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-3.1.0.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.0.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
