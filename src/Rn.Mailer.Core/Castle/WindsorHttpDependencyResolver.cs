@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web.Http.Dependencies;
 using Castle.Windsor;
 
-namespace Rn.Mailer.Castle
+namespace Rn.Mailer.Core.Castle
 {
     public class WindsorHttpDependencyResolver : IDependencyResolver
     {

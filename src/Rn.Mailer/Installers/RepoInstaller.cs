@@ -1,17 +1,18 @@
-﻿using Castle.MicroKernel.Registration;
+﻿using System;
+using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Rn.Core.Config;
+using Rn.Mailer.DAL.Repos;
 
-namespace Rn.Mailer.Castle.Installers
+namespace Rn.Mailer.Installers
 {
-    public class ServiceInstaller : IWindsorInstaller
+    public class RepoInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(Component
-                .For<IWebConfig>()
-                .ImplementedBy<RnWebConfig>()
+                .For<IUserRepo>()
+                .ImplementedBy<UserRepo>()
                 .LifestyleSingleton());
         }
     }

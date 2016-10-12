@@ -5,7 +5,7 @@ using System.Web.Http.Dependencies;
 using Castle.MicroKernel.Lifestyle;
 using Castle.Windsor;
 
-namespace Rn.Mailer.Castle
+namespace Rn.Mailer.Core.Castle
 {
     public class WindsorDependencyScope : IDependencyScope
     {

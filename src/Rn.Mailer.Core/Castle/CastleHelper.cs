@@ -1,7 +1,9 @@
+using System;
+using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Castle.Windsor.Installer;
 
-namespace Rn.Mailer.Castle
+namespace Rn.Mailer.Core.Castle
 {
     public static class CastleHelper
     {
@@ -21,7 +23,9 @@ namespace Rn.Mailer.Castle
                 return _resolver;
 
             _initialized = true;
-            Container.Install(FromAssembly.This());
+            //Container.Install(FromAssembly.This());
+            Container.Install(FromAssembly.InDirectory(new AssemblyFilter(AppDomain.CurrentDomain.RelativeSearchPath)));
+
             _resolver = new WindsorHttpDependencyResolver(Container);
 
             return _resolver;

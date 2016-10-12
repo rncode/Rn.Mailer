@@ -1,5 +1,5 @@
 ﻿using System.Web.Http;
-using Rn.Mailer.Castle;
+using Rn.Mailer.Core.Castle;
 
 namespace Rn.Mailer
 {

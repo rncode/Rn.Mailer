@@ -3,7 +3,7 @@ using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 
-namespace Rn.Mailer.Castle.Installers
+namespace Rn.Mailer.Installers
 {
     public class WebApiControllerInstaller : IWindsorInstaller
     {

@@ -144,24 +144,23 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Castle\CastleHelper.cs" />
-    <Compile Include="Castle\Installers\ServiceInstaller.cs" />
-    <Compile Include="Castle\Installers\WebApiControllerInstaller.cs" />
-    <Compile Include="Castle\WindsorDependencyScope.cs" />
-    <Compile Include="Castle\WindsorHttpDependencyResolver.cs" />
+    <Compile Include="Controllers\API\TestController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Installers\RepoInstaller.cs" />
+    <Compile Include="Installers\ServiceInstaller.cs" />
+    <Compile Include="Installers\WebApiControllerInstaller.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -207,6 +206,10 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rn.Mailer.Core\Rn.Mailer.Core.csproj">
+      <Project>{E47A3791-D285-47ED-B1C1-D705404A8481}</Project>
+      <Name>Rn.Mailer.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rn.Mailer.DAL\Rn.Mailer.DAL.csproj">
       <Project>{ea09cc2b-e4cf-4749-8cda-1dcb5dba2405}</Project>
       <Name>Rn.Mailer.DAL</Name>

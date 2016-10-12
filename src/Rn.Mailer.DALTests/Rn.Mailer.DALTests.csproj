@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7DCD872F-7068-4591-B198-BC256D012A44}</ProjectGuid>
+    <ProjectGuid>{4C9D5847-EDCC-443A-9BDE-66C27DE9FDB3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rn.Mailer.CoreTests</RootNamespace>
-    <AssemblyName>Rn.Mailer.CoreTests</AssemblyName>
+    <RootNamespace>Rn.Mailer.DALTests</RootNamespace>
+    <AssemblyName>Rn.Mailer.DALTests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -58,6 +58,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Helpers\MapperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,12 +67,17 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rn.Mailer.Core\Rn.Mailer.Core.csproj">
-      <Project>{E47A3791-D285-47ED-B1C1-D705404A8481}</Project>
+      <Project>{e47a3791-d285-47ed-b1c1-d705404a8481}</Project>
       <Name>Rn.Mailer.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TestSupport\" />
+    <ProjectReference Include="..\Rn.Mailer.DAL\Rn.Mailer.DAL.csproj">
+      <Project>{EA09CC2B-E4CF-4749-8CDA-1DCB5DBA2405}</Project>
+      <Name>Rn.Mailer.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rn.Mailer.TestSupport\Rn.Mailer.TestCore.csproj">
+      <Project>{B33B62B7-61C2-406F-9877-CED445E38B4A}</Project>
+      <Name>Rn.Mailer.TestCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
