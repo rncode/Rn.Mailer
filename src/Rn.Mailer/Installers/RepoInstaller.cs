@@ -1,5 +1,4 @@
-﻿using System;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Rn.Mailer.DAL.Repos;
@@ -13,6 +12,11 @@ namespace Rn.Mailer.Installers
             container.Register(Component
                 .For<IUserRepo>()
                 .ImplementedBy<UserRepo>()
+                .LifestyleSingleton());
+
+            container.Register(Component
+                .For<IMailAccountsRepo>()
+                .ImplementedBy<MailAccountsRepo>()
                 .LifestyleSingleton());
         }
     }

@@ -15,8 +15,7 @@ namespace Rn.Mailer.Installers
         {
             container.Register(Component
                 .For<IWebConfig>()
-                .ImplementedBy<RnWebConfig>()
-                .LifestyleSingleton());
+                .Instance(GetWebConfig()));
 
             container.Register(Component
                 .For<IEncryptionService>()
@@ -31,9 +30,14 @@ namespace Rn.Mailer.Installers
             container.Register(Component
                 .For<IEncryptionHelper>()
                 .Instance(GetEncryptionHelper()));
+
+            container.Register(Component
+                .For<IMailAccountService>()
+                .ImplementedBy<MailAccountService>()
+                .LifestyleSingleton());
         }
 
-        private static EncryptionHelper GetEncryptionHelper()
+        private static IEncryptionHelper GetEncryptionHelper()
         {
             var saltString = ConfigurationManager.AppSettings["Rn.Mailer.Encryption.Salt"];
 
@@ -45,6 +49,24 @@ namespace Rn.Mailer.Installers
 
             var encryptionHelper = new EncryptionHelper(saltString);
             return encryptionHelper;
+        }
+
+        private static IWebConfig GetWebConfig()
+        {
+            var webConfig = new RnWebConfig();
+            var serverKey = ConfigurationManager.AppSettings["Rn.Mailer.Encryption.ServerPass"];
+
+            // Check to see if we need to overwrite "Rn.EncryptionService.ServerPass"
+            if (string.IsNullOrWhiteSpace(serverKey))
+                return webConfig;
+
+            var newServerKey = File.Exists(serverKey)
+                ? File.ReadAllText(serverKey)
+                : serverKey;
+
+            webConfig.SetAppSetting("Rn.EncryptionService.ServerPass", newServerKey);
+
+            return webConfig;
         }
     }
 }

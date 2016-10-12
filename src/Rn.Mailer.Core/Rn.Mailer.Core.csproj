@@ -42,8 +42,8 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Rn.Core, Version=1.0.0.107, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Rn.Core.1.0.0.107\lib\net45\Rn.Core.dll</HintPath>
+    <Reference Include="Rn.Core, Version=1.0.0.108, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rn.Core.1.0.0.108\lib\net45\Rn.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -67,6 +67,7 @@
     <Compile Include="Castle\CastleHelper.cs" />
     <Compile Include="Castle\WindsorDependencyScope.cs" />
     <Compile Include="Castle\WindsorHttpDependencyResolver.cs" />
+    <Compile Include="Models\MailAccount.cs" />
     <Compile Include="Models\MailerUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

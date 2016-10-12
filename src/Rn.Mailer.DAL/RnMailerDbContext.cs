@@ -6,6 +6,7 @@ namespace Rn.Mailer.DAL
     public class RnMailerDbContext : DbContext
     {
         public virtual DbSet<MailerUserEntity> Users { get; set; }
+        public virtual DbSet<MailAccountEntity> MailAccounts { get; set; }
 
         public RnMailerDbContext()
             : base("RnMailer")
