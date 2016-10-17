@@ -38,7 +38,12 @@ namespace Rn.Mailer.DAL.Helpers
                 DateAddedUtc = account.DateAddedUtc,
                 Enabled = account.Enabled,
                 MailsSent = account.MailsSent,
-                UserId = account.UserId
+                UserId = account.UserId,
+                Host = account.Host,
+                FromAddress = account.FromAddress,
+                FromName = account.FromName,
+                Port = account.Port,
+                UseSsl = account.UseSsl
             };
 
             if (mapPassword)

@@ -46,12 +46,23 @@ namespace Rn.Mailer.DAL
             var accountsFile = ConfigurationManager.AppSettings["Rn.Mailer.Seed.MailAccounts"];
             var accountLines = File.ReadAllLines(accountsFile);
             var accounts = new List<MailAccountEntity>();
+            var parsedHeader = false;
 
+            // todo: document the expected format for the mail accounts CSV file
             foreach (var account in accountLines)
             {
                 if (string.IsNullOrWhiteSpace(account)) continue;
+
+                // Skip the first row - this is the CSV file header
+                if (!parsedHeader)
+                {
+                    parsedHeader = true;
+                    continue;
+                }
+
                 var bits = account.Split(',');
 
+                // todo: add better CSV file parsing here...
                 accounts.Add(new MailAccountEntity
                 {
                     Username = bits[0],
@@ -59,7 +70,12 @@ namespace Rn.Mailer.DAL
                     Enabled = true,
                     MailsSent = 0,
                     Password = bits[1],
-                    UserId = me.Id
+                    UserId = me.Id,
+                    Host = bits[2],
+                    Port = int.Parse(bits[3]),
+                    UseSsl = bool.Parse(bits[4]),
+                    FromAddress = bits[5],
+                    FromName = bits[6]
                 });
             }
 

@@ -67,6 +67,7 @@
     <Compile Include="Castle\CastleHelper.cs" />
     <Compile Include="Castle\WindsorDependencyScope.cs" />
     <Compile Include="Castle\WindsorHttpDependencyResolver.cs" />
+    <Compile Include="MailClient.cs" />
     <Compile Include="Models\MailAccount.cs" />
     <Compile Include="Models\MailerUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

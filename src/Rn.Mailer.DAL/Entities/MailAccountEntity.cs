@@ -22,10 +22,23 @@ namespace Rn.Mailer.DAL.Entities
         [Required]
         public int UserId { get; set; }
 
-        [Required]
         public string Username { get; set; }
 
-        [Required]
         public string Password { get; set; }
+
+        [Required]
+        public string Host { get; set; }
+
+        [Required]
+        public int Port { get; set; }
+
+        [Required]
+        public bool UseSsl { get; set; }
+
+        [Required]
+        public string FromAddress { get; set; }
+
+        [Required]
+        public string FromName { get; set; }
     }
 }
