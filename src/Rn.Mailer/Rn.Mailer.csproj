@@ -199,7 +199,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Rn.Mailer.Core\Rn.Mailer.Core.csproj">
+      <Project>{e759ef09-d29c-4dc1-bc7c-f0d8bff38eb8}</Project>
+      <Name>Rn.Mailer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rn.Mailer.DAL\Rn.Mailer.DAL.csproj">
+      <Project>{4f78c625-4809-43fe-b07a-134ae89cfe76}</Project>
+      <Name>Rn.Mailer.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
