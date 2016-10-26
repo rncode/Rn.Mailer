@@ -23,6 +23,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{881D9D02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailerTools", "MailerTools\MailerTools.csproj", "{B45DDFE5-8904-4935-9306-A18A464399BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rn.Mailer.Common", "Rn.Mailer.Common\Rn.Mailer.Common.csproj", "{B5BC55E7-E348-419E-8323-0B4AC8AA0818}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{B45DDFE5-8904-4935-9306-A18A464399BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B45DDFE5-8904-4935-9306-A18A464399BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B45DDFE5-8904-4935-9306-A18A464399BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BC55E7-E348-419E-8323-0B4AC8AA0818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BC55E7-E348-419E-8323-0B4AC8AA0818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BC55E7-E348-419E-8323-0B4AC8AA0818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BC55E7-E348-419E-8323-0B4AC8AA0818}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
