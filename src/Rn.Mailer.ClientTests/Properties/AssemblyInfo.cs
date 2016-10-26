@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Rn.Mailer.DAL")]
+[assembly: AssemblyTitle("Rn.Mailer.ClientTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Rn.Mailer.DAL")]
+[assembly: AssemblyProduct("Rn.Mailer.ClientTests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("4f78c625-4809-43fe-b07a-134ae89cfe76")]
+[assembly: Guid("2daa7cc4-0e2b-4ad8-ac21-68296cb0b972")]
 
 // Version information for an assembly consists of the following four values:
 //

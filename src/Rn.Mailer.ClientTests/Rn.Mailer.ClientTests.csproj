@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CCEA4FED-360C-40D1-8B3D-3311594B82E8}</ProjectGuid>
+    <ProjectGuid>{2DAA7CC4-0E2B-4AD8-AC21-68296CB0B972}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rn.MailerTests</RootNamespace>
-    <AssemblyName>Rn.MailerTests</AssemblyName>
+    <RootNamespace>Rn.Mailer.ClientTests</RootNamespace>
+    <AssemblyName>Rn.Mailer.ClientTests</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -58,16 +58,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Models\TestRnMailAddress.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Rn.Mailer\Rn.Mailer.csproj">
-      <Project>{1c294c9d-8895-4a9b-8361-97222ddaca25}</Project>
-      <Name>Rn.Mailer</Name>
+    <ProjectReference Include="..\Rn.Mailer.Client\Rn.Mailer.Client.csproj">
+      <Project>{f5f7b567-6c33-4dc6-82b2-2dcf7433af24}</Project>
+      <Name>Rn.Mailer.Client</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>
