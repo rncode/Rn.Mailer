@@ -17,6 +17,9 @@ namespace Rn.Mailer.DAL.Entities
         public DateTime DateAddedUtc { get; set; }
 
         [Required]
+        public DateTime LastLoginDateUtc { get; set; }
+
+        [Required]
         public string Username { get; set; }
 
         [Required]

@@ -53,6 +53,7 @@
     <Compile Include="Entities\MailAccountEntity.cs" />
     <Compile Include="Entities\MailUserEntity.cs" />
     <Compile Include="MailerDbContext.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -20,7 +20,7 @@ namespace Rn.Mailer.DAL.Entities
         public int MailAccountId { get; set; }
 
         [Required]
-        public int UserId { get; set; }
+        public long MailSendCount { get; set; }
 
         [Required]
         public string ApiKey { get; set; }
@@ -28,8 +28,5 @@ namespace Rn.Mailer.DAL.Entities
         // Navigation properties
         [ForeignKey("MailAccountId")]
         public MailAccountEntity MailAccount { get; set; }
-
-        [ForeignKey("UserId")]
-        public MailUserEntity User { get; set; }
     }
 }
