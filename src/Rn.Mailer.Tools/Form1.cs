@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using Rn.Mailer.Tools.Forms;
 
 namespace Rn.Mailer.Tools
 {
@@ -15,6 +9,13 @@ namespace Rn.Mailer.Tools
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void btnEncryptionHelper_Click(object sender, EventArgs e)
+        {
+            var encryptionHelper = new EncryptionHelper();
+            encryptionHelper.Show();
+            encryptionHelper.Focus();
         }
     }
 }
