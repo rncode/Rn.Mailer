@@ -12,6 +12,7 @@ namespace Rn.Mailer.DAL
         public MailerDbContext()
             : base("RnMailer")
         {
+            Database.SetInitializer(new MailerDbInitializer());
         }
     }
 }
