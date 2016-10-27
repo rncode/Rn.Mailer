@@ -17,10 +17,10 @@ namespace Rn.Mailer.Core.Models
         /// <summary>
         /// The date (in UTC) that this user account was created
         /// </summary>
-        public DateTime DateAddedUtc { get; set; }
+        public DateTime CreationDateUtc { get; set; }
 
         /// <summary>
-        /// The last time (in UTC) the user logged in - initially this is set to the DateAddedUtc value
+        /// The last time (in UTC) the user logged in - initially this is set to the CreationDateUtc value
         /// </summary>
         public DateTime LastLoginDateUtc { get; set; }
 

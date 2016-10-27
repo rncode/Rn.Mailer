@@ -17,7 +17,7 @@ namespace Rn.Mailer.Core.Models
         /// <summary>
         /// The date (in UTC) that this API key was created
         /// </summary>
-        public DateTime DateAddedUtc { get; set; }
+        public DateTime CreationDateUtc { get; set; }
 
         /// <summary>
         /// The associated MailAccount’s identifier
