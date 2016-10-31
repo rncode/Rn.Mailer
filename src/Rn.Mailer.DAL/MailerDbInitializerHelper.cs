@@ -10,8 +10,11 @@ namespace Rn.Mailer.DAL
     public class MailerDbInitializerHelper : IDisposable
     {
         public bool DevelopmentMode { get; set; }
-        public RnEncryptionService EncryptionService { get; set; }
+        public IWebConfig WebConfig { get; private set; }
+        public IEncryptionService EncryptionService { get; private set; }
+
         public List<MailUserEntity> Users { get; set; }
+        public List<MailAccountEntity> MailAccounts { get; set; }
 
         private readonly MailerDbContext _db;
 
@@ -20,11 +23,12 @@ namespace Rn.Mailer.DAL
         {
             _db = db;
 
-            var webConfig = new RnWebConfig();
-            EncryptionService = new RnEncryptionService(webConfig);
-            DevelopmentMode = webConfig.GetBoolAppSetting("Rn.Mailer.DevMode", false);
+            WebConfig = new RnWebConfig();
+            EncryptionService = new RnEncryptionService(WebConfig);
+            DevelopmentMode = WebConfig.GetBoolAppSetting("Rn.Mailer.DevMode", false);
 
             Users = new List<MailUserEntity>();
+            MailAccounts = new List<MailAccountEntity>();
         }
 
         // Public methods
@@ -37,10 +41,22 @@ namespace Rn.Mailer.DAL
             Users.AddRange(_db.Users.ToList());
         }
 
+        public void AddMailAccounts(List<MailAccountEntity> accounts)
+        {
+            _db.MailAccounts.AddRange(accounts);
+            _db.SaveChanges();
+
+            MailAccounts.Clear();
+            MailAccounts.AddRange(_db.MailAccounts.ToList());
+        }
+
+        // IDisposable
         public void Dispose()
         {
             Users.Clear();
+            MailAccounts.Clear();
 
+            WebConfig = null;
             EncryptionService = null;
         }
     }
