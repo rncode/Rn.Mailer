@@ -17,5 +17,12 @@ namespace Rn.Mailer.Tools
             encryptionHelper.Show();
             encryptionHelper.Focus();
         }
+
+        private void btnGuidGen_Click(object sender, EventArgs e)
+        {
+            var ggen = new GuidGen();
+            ggen.Show();
+            ggen.Focus();
+        }
     }
 }

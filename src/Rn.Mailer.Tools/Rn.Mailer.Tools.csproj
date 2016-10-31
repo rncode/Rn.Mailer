@@ -62,6 +62,12 @@
     <Compile Include="Forms\EncryptionHelper.Designer.cs">
       <DependentUpon>EncryptionHelper.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\GuidGen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\GuidGen.Designer.cs">
+      <DependentUpon>GuidGen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Mapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EncryptionHelper.resx">
       <DependentUpon>EncryptionHelper.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\GuidGen.resx">
+      <DependentUpon>GuidGen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
