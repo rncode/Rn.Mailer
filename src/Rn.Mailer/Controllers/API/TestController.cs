@@ -30,5 +30,15 @@ namespace Rn.Mailer.Controllers.API
                 return Ok(accounts);
             }
         }
+
+        [HttpGet, Route("MailApiKeys")]
+        public IHttpActionResult MailApiKeys()
+        {
+            using (var db = new MailerDbContext())
+            {
+                var apiKeys = db.ApiKeys.ToList();
+                return Ok(apiKeys);
+            }
+        }
     }
 }

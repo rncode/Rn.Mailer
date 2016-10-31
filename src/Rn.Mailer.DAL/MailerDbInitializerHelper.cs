@@ -15,6 +15,7 @@ namespace Rn.Mailer.DAL
 
         public List<MailUserEntity> Users { get; set; }
         public List<MailAccountEntity> MailAccounts { get; set; }
+        public List<MailApiKeyEntity> ApiKeys { get; set; }
 
         private readonly MailerDbContext _db;
 
@@ -29,6 +30,7 @@ namespace Rn.Mailer.DAL
 
             Users = new List<MailUserEntity>();
             MailAccounts = new List<MailAccountEntity>();
+            ApiKeys = new List<MailApiKeyEntity>();
         }
 
         // Public methods
@@ -50,11 +52,21 @@ namespace Rn.Mailer.DAL
             MailAccounts.AddRange(_db.MailAccounts.ToList());
         }
 
+        public void AddApiKeys(List<MailApiKeyEntity> apiKeys)
+        {
+            _db.ApiKeys.AddRange(apiKeys);
+            _db.SaveChanges();
+
+            ApiKeys.Clear();
+            apiKeys.AddRange(_db.ApiKeys.ToList());
+        }
+
         // IDisposable
         public void Dispose()
         {
             Users.Clear();
             MailAccounts.Clear();
+            ApiKeys.Clear();
 
             WebConfig = null;
             EncryptionService = null;

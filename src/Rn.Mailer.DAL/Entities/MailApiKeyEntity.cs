@@ -28,5 +28,18 @@ namespace Rn.Mailer.DAL.Entities
         // Navigation properties
         [ForeignKey("MailAccountId")]
         public MailAccountEntity MailAccount { get; set; }
+
+        // Constructors
+        public MailApiKeyEntity()
+        { }
+
+        public MailApiKeyEntity(int mailAccountId, string apiKey)
+        {
+            Enabled = true;
+            CreationDateUtc = DateTime.UtcNow;
+            MailAccountId = mailAccountId;
+            ApiKey = apiKey;
+            MailSendCount = 0;
+        }
     }
 }

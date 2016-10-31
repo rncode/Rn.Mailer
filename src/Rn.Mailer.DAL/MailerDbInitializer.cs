@@ -16,6 +16,7 @@ namespace Rn.Mailer.DAL
             {
                 SeedUserAccounts(helper);
                 SeedMailAccounts(helper);
+                SeedApiKeys(helper);
             }
 
             base.Seed(context);
@@ -37,6 +38,7 @@ namespace Rn.Mailer.DAL
             });
         }
 
+        // http://localhost/Rn.Mailer/API/v1/Test/MailAccounts
         private static void SeedMailAccounts(MailerDbInitializerHelper helper)
         {
             if (!helper.DevelopmentMode) return;
@@ -91,6 +93,44 @@ namespace Rn.Mailer.DAL
 
             // Finally append the extracted accounts to the DB
             helper.AddMailAccounts(seedAccounts);
+        }
+
+        // http://localhost/Rn.Mailer/API/v1/Test/MailApiKeys
+        private static void SeedApiKeys(MailerDbInitializerHelper helper)
+        {
+            var apiKeys = new List<MailApiKeyEntity>();
+
+            // If there are initial mail accounts - seed at least 1 Api key per account
+            foreach (var account in helper.MailAccounts)
+            {
+                apiKeys.Add(new MailApiKeyEntity
+                {
+                    ApiKey = Guid.NewGuid().ToString().ToUpper(),
+                    CreationDateUtc = DateTime.UtcNow,
+                    Enabled = true,
+                    MailSendCount = 0,
+                    MailAccountId = account.Id
+                });
+            }
+
+            // If we are in developer mode - seed my required API keys
+            if (helper.DevelopmentMode)
+            {
+                var account = helper.MailAccounts.FirstOrDefault(x => x.Enabled);
+
+                if (account != null)
+                {
+                    apiKeys.AddRange(new List<MailApiKeyEntity>
+                    {
+                        new MailApiKeyEntity(account.Id, "9FFED1DF-F031-4BAC-A296-8A182D983E66"),
+                        new MailApiKeyEntity(account.Id, "6D5D5360-9236-488A-9B17-F6887C087F67"),
+                        new MailApiKeyEntity(account.Id, "3A8C6899-DA22-4E62-B1EA-2E017DAAFDDE")
+                    });
+                }
+            }
+
+            // Finally commit all API keys to the DB
+            helper.AddApiKeys(apiKeys);
         }
     }
 }
