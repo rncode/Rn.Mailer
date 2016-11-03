@@ -14,6 +14,11 @@ namespace Rn.Mailer.Castle.Installers
                 .For<IMailAccountRepo>()
                 .ImplementedBy<MailAccountRepo>()
                 .LifestyleSingleton());
+
+            container.Register(Component
+                .For<IUserAccountRepo>()
+                .ImplementedBy<UserAccountRepo>()
+                .LifestyleSingleton());
         }
     }
 }

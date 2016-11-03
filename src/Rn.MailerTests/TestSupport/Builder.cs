@@ -13,5 +13,13 @@ namespace Rn.MailerTests.TestSupport
 
             return new MailAccountService(mailAccountRepo);
         }
+
+        public static UserAccountService BuildUserAccountService(
+            IUserAccountRepo userAccountRepo = null)
+        {
+            userAccountRepo = userAccountRepo ?? Substitute.For<IUserAccountRepo>();
+
+            return new UserAccountService(userAccountRepo);
+        }
     }
 }
