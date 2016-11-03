@@ -152,7 +152,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Castle\CastleHelper.cs" />
+    <Compile Include="Castle\Installers\RepoInstaller.cs" />
     <Compile Include="Castle\Installers\ServiceInstaller.cs" />
+    <Compile Include="Services\MailAccountService.cs" />
     <Compile Include="Services\TestService.cs" />
     <Compile Include="Castle\Installers\WebApiControllerInstaller.cs" />
     <Compile Include="Castle\WindsorDependencyScope.cs" />

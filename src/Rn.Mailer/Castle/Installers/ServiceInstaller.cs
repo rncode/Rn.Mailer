@@ -3,6 +3,7 @@ using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
 using Rn.Core.Config;
 using Rn.Core.Encryption;
+using Rn.Mailer.Core.Interfaces.Services;
 using Rn.Mailer.Services;
 
 namespace Rn.Mailer.Castle.Installers
@@ -24,6 +25,11 @@ namespace Rn.Mailer.Castle.Installers
             container.Register(Component
                 .For<IEncryptionService>()
                 .ImplementedBy<RnEncryptionService>()
+                .LifestyleSingleton());
+
+            container.Register(Component
+                .For<IMailAccountService>()
+                .ImplementedBy<MailAccountService>()
                 .LifestyleSingleton());
         }
     }

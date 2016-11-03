@@ -63,8 +63,14 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\TestMailAccountService.cs" />
+    <Compile Include="TestSupport\Builder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rn.Mailer.Core\Rn.Mailer.Core.csproj">
+      <Project>{E759EF09-D29C-4DC1-BC7C-F0D8BFF38EB8}</Project>
+      <Name>Rn.Mailer.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rn.Mailer\Rn.Mailer.csproj">
       <Project>{1c294c9d-8895-4a9b-8361-97222ddaca25}</Project>
       <Name>Rn.Mailer</Name>
