@@ -5,6 +5,6 @@ namespace Rn.Mailer.Core.Interfaces.Repos
 {
     public interface IMailAccountRepo
     {
-        //Task<MailAccount> GetMailAccount(int accountId);
+        Task<MailAccount> GetMailAccount(int accountId, bool includeUser = false);
     }
 }

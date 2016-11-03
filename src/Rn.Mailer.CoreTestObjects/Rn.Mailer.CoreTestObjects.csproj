@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E759EF09-D29C-4DC1-BC7C-F0D8BFF38EB8}</ProjectGuid>
+    <ProjectGuid>{FE6A3587-4125-4095-8439-426E78DFC3C6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rn.Mailer.Core</RootNamespace>
-    <AssemblyName>Rn.Mailer.Core</AssemblyName>
+    <RootNamespace>Rn.Mailer.CoreTestObjects</RootNamespace>
+    <AssemblyName>Rn.Mailer.CoreTestObjects</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,15 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interfaces\IRnLogger.cs" />
-    <Compile Include="Interfaces\Repos\IMailAccountRepo.cs" />
-    <Compile Include="Interfaces\Repos\IUserAccountRepo.cs" />
-    <Compile Include="Interfaces\Services\IMailAccountService.cs" />
-    <Compile Include="Interfaces\Services\IUserAccountService.cs" />
-    <Compile Include="Models\MailAccount.cs" />
-    <Compile Include="Models\MailApiKey.cs" />
-    <Compile Include="Models\MailUser.cs" />
+    <Compile Include="Builders\MailAccountBuilder.cs" />
+    <Compile Include="RnAssert.cs" />
+    <Compile Include="Builders\MailUserBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Rn.Mailer.Core\Rn.Mailer.Core.csproj">
+      <Project>{E759EF09-D29C-4DC1-BC7C-F0D8BFF38EB8}</Project>
+      <Name>Rn.Mailer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Rn.Mailer.DAL\Rn.Mailer.DAL.csproj">
+      <Project>{4F78C625-4809-43FE-B07A-134AE89CFE76}</Project>
+      <Name>Rn.Mailer.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

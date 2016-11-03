@@ -68,6 +68,10 @@
     <Compile Include="TestSupport\Builder.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Rn.Mailer.CoreTestObjects\Rn.Mailer.CoreTestObjects.csproj">
+      <Project>{FE6A3587-4125-4095-8439-426E78DFC3C6}</Project>
+      <Name>Rn.Mailer.CoreTestObjects</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Rn.Mailer.Core\Rn.Mailer.Core.csproj">
       <Project>{E759EF09-D29C-4DC1-BC7C-F0D8BFF38EB8}</Project>
       <Name>Rn.Mailer.Core</Name>
