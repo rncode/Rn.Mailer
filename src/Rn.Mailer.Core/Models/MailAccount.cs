@@ -15,6 +15,12 @@ namespace Rn.Mailer.Core.Models
         public bool Enabled { get; set; }
 
         /// <summary>
+        /// Indicates that all mails sent from this account should be redirected to a local 
+        /// folder rather than routing through the mail server
+        /// </summary>
+        public bool RedirectToDisk { get; set; }
+
+        /// <summary>
         /// The date (in UTC) that this MailAccount was created
         /// </summary>
         public DateTime CreationDateUtc { get; set; }

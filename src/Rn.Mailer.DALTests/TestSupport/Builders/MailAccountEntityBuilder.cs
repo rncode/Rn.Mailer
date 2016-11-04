@@ -25,7 +25,15 @@ namespace Rn.Mailer.DALTests.TestSupport.Builders
             _account.EnableSsl = true;
             _account.FromAddress = "niemand.richard@gmail.com";
             _account.FromDisplayName = "Richard Niemand";
+            _account.RedirectToDisk = false;
             _account.User = new MailUserEntityBuilder().AsValidObject().Build();
+
+            return this;
+        }
+
+        public MailAccountEntityBuilder WithRedirectToDisk(bool redirectToDisk)
+        {
+            _account.RedirectToDisk = redirectToDisk;
 
             return this;
         }

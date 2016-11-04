@@ -68,7 +68,6 @@
     <Compile Include="Forms\GuidGen.Designer.cs">
       <DependentUpon>GuidGen.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mapper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

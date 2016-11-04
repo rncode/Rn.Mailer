@@ -87,6 +87,24 @@ namespace Rn.Mailer.DALTests
         }
 
         [Test]
+        public void AsMailAccount_GivenAccountWithRedirectToDiskEnabled_ShouldMapAllProperties()
+        {
+            // Arrange
+            var accountEntity = new MailAccountEntityBuilder()
+                .AsValidObject()
+                .WithRedirectToDisk(true)
+                .Build();
+
+            // Act
+            var account = accountEntity.AsMailAccount();
+
+            // Assert
+            Assert.IsNotNull(account);
+            RnAssert.AreEqual(accountEntity, account);
+            Assert.IsTrue(account.RedirectToDisk);
+        }
+
+        [Test]
         public void AsMailAccount_GivenWasToldToSkipPasswordMapping_ShouldNotMapPassword()
         {
             // Arrange

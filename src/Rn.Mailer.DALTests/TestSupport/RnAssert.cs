@@ -31,6 +31,7 @@ namespace Rn.Mailer.DALTests.TestSupport
             Assert.AreEqual(source.EnableSsl, target.EnableSsl);
             Assert.AreEqual(source.FromAddress, target.FromAddress);
             Assert.AreEqual(source.FromDisplayName, target.FromDisplayName);
+            Assert.AreEqual(source.RedirectToDisk, target.RedirectToDisk);
 
             if(checkPassword)
                 Assert.AreEqual(source.SmtpPassword, target.SmtpPassword);

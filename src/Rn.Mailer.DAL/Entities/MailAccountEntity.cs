@@ -14,6 +14,9 @@ namespace Rn.Mailer.DAL.Entities
         public bool Enabled { get; set; }
 
         [Required]
+        public bool RedirectToDisk { get; set; }
+
+        [Required]
         public DateTime CreationDateUtc { get; set; }
 
         [Required]

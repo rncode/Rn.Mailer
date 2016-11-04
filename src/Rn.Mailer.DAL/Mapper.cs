@@ -43,7 +43,8 @@ namespace Rn.Mailer.DAL
                 FromAddress = source.FromAddress,
                 EnableSsl = source.EnableSsl,
                 SmtpPort = source.SmtpPort,
-                CreationDateUtc = source.CreationDateUtc
+                CreationDateUtc = source.CreationDateUtc,
+                RedirectToDisk = source.RedirectToDisk
             };
 
             if (mapPassword)

@@ -87,7 +87,8 @@ namespace Rn.Mailer.DAL
                     FromDisplayName = rawParts[6].Trim(),
                     Enabled = bool.Parse(rawParts[7].Trim()),
                     CreationDateUtc = DateTime.UtcNow,
-                    UserId = admin.Id
+                    UserId = admin.Id,
+                    RedirectToDisk = bool.Parse(rawParts[8].Trim())
                 });
             }
 
