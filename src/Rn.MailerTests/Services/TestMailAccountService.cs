@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Rn.Mailer.Core.Interfaces;
 using Rn.Mailer.Core.Interfaces.Repos;
 using Rn.Mailer.Core.Models;
+using Rn.Mailer.CoreTestObjects;
 using Rn.Mailer.CoreTestObjects.Builders;
 using Rn.MailerTests.TestSupport;
 
@@ -108,6 +109,61 @@ namespace Rn.MailerTests.Services
             // Assert
             Assert.IsNotNull(account);
             Assert.AreEqual(account, mailAccount);
+        }
+
+        [Test]
+        public void GetMailAccount_GivenValidAccount_ShouldDecryptSmtpPassword()
+        {
+            // Arrange
+            var repo = Substitute.For<IMailAccountRepo>();
+            var encryptionService = TestObjects.GetEncryptionService();
+            var encryptedPass = encryptionService.EncryptText("password");
+            var account = new MailAccountBuilder()
+                .AsValidAccount()
+                .WithSmtpPassword(encryptedPass)
+                .Build();
+
+            repo.GetMailAccount(1).Returns(account);
+
+            var service = Builder.BuildMailAccountService(
+                mailAccountRepo: repo,
+                encryptionService: encryptionService);
+
+            // Act
+            var mailAccount = service.GetMailAccount(1).Result;
+
+            // Assert
+            Assert.IsNotNull(mailAccount);
+            Assert.AreEqual("password", mailAccount.SmtpPassword);
+        }
+
+        [Test]
+        public void GetMailAccount_GivenHasUserAccount_ShouldDecryptUsersPassword()
+        {
+            // Arrange
+            var repo = Substitute.For<IMailAccountRepo>();
+            var encryptionService = TestObjects.GetEncryptionService();
+            var encryptedPass = encryptionService.EncryptText("password");
+            var account = new MailAccountBuilder()
+                .AsValidAccount()
+                .WithSmtpPassword(encryptedPass)
+                .WithValidUserAccount()
+                .WithUserAccountPassword(encryptedPass)
+                .Build();
+
+            repo.GetMailAccount(1, true).Returns(account);
+
+            var service = Builder.BuildMailAccountService(
+                mailAccountRepo: repo,
+                encryptionService: encryptionService);
+
+            // Act
+            var mailAccount = service.GetMailAccount(1, true).Result;
+
+            // Assert
+            Assert.IsNotNull(mailAccount);
+            Assert.IsNotNull(mailAccount.User);
+            Assert.AreEqual("password", mailAccount.User.Password);
         }
     }
 }

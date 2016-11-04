@@ -10,12 +10,14 @@ namespace Rn.MailerTests.TestSupport
     {
         public static MailAccountService BuildMailAccountService(
             IRnLogger logger = null,
-            IMailAccountRepo mailAccountRepo = null)
+            IMailAccountRepo mailAccountRepo = null,
+            IEncryptionService encryptionService = null)
         {
             logger = logger ?? Substitute.For<IRnLogger>();
             mailAccountRepo = mailAccountRepo ?? Substitute.For<IMailAccountRepo>();
+            encryptionService = encryptionService ?? Substitute.For<IEncryptionService>();
 
-            return new MailAccountService(logger, mailAccountRepo);
+            return new MailAccountService(logger, mailAccountRepo, encryptionService);
         }
 
         public static UserAccountService BuildUserAccountService(

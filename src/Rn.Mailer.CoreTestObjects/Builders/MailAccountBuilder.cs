@@ -29,10 +29,27 @@ namespace Rn.Mailer.CoreTestObjects.Builders
             return this;
         }
 
+        public MailAccountBuilder WithSmtpPassword(string password)
+        {
+            _mailAccount.SmtpPassword = password;
+
+            return this;
+        }
+
         public MailAccountBuilder WithValidUserAccount()
         {
             _mailAccount.User = new MailUserBuilder().AsValidUser().Build();
             _mailAccount.UserId = _mailAccount.User.Id;
+
+            return this;
+        }
+
+        public MailAccountBuilder WithUserAccountPassword(string password)
+        {
+            if (_mailAccount.User == null)
+                return this;
+
+            _mailAccount.User.Password = password;
 
             return this;
         }

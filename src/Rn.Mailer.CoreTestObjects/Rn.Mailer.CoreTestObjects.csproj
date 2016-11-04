@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\MailAccountBuilder.cs" />
+    <Compile Include="HackTest.cs" />
     <Compile Include="RnAssert.cs" />
     <Compile Include="Builders\MailUserBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
