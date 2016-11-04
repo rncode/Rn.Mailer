@@ -1,9 +1,12 @@
 ﻿using System;
 using NSubstitute;
 using NUnit.Framework;
+using Rn.Core.Config;
+using Rn.Core.Encryption;
 using Rn.Mailer.Core.Interfaces;
 using Rn.Mailer.Core.Interfaces.Repos;
 using Rn.Mailer.Core.Models;
+using Rn.Mailer.CoreTestObjects;
 using Rn.Mailer.CoreTestObjects.Builders;
 using Rn.MailerTests.TestSupport;
 
@@ -96,6 +99,33 @@ namespace Rn.MailerTests.Services
             // Assert
             Assert.IsNotNull(user);
             Assert.AreEqual(user, serviceUser);
+        }
+
+        [Test]
+        public void GetUserAccount_GivenHasAccount_ShouldDecryptPassword()
+        {
+            // Arrange
+            var repo = Substitute.For<IUserAccountRepo>();
+            var encryptionService = TestObjects.GetEncryptionService();
+            var encryptedPass = encryptionService.EncryptText("password");
+
+            var serviceUser = new MailUserBuilder()
+                .AsValidUser()
+                .WithPassword(encryptedPass)
+                .Build();
+
+            repo.GetUserAccount(1).Returns(serviceUser);
+
+            var service = Builder.BuildUserAccountService(
+                userAccountRepo: repo,
+                encryptionService: encryptionService);
+
+            // Act
+            var user = service.GetUserAccount(1).Result;
+
+            // Assert
+            Assert.IsNotNull(user);
+            Assert.AreEqual("password", user.Password);
         }
     }
 }

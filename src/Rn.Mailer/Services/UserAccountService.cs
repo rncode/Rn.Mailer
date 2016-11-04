@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Rn.Core.Encryption;
 using Rn.Mailer.Core.Interfaces;
 using Rn.Mailer.Core.Interfaces.Repos;
 using Rn.Mailer.Core.Interfaces.Services;
@@ -11,11 +12,13 @@ namespace Rn.Mailer.Services
     {
         private readonly IRnLogger _logger;
         private readonly IUserAccountRepo _repo;
+        private readonly IEncryptionService _encryption;
 
-        public UserAccountService(IRnLogger logger, IUserAccountRepo repo)
+        public UserAccountService(IRnLogger logger, IUserAccountRepo repo, IEncryptionService encryption)
         {
             _logger = logger;
             _repo = repo;
+            _encryption = encryption;
         }
 
         public async Task<MailUser> GetUserAccount(int userId)
@@ -31,7 +34,13 @@ namespace Rn.Mailer.Services
 
             // ensure that we have a user to work with
             if (userAccount == null)
+            {
                 _logger.Debug($"UserAccountService.GetUserAccount() no user account found for userId ({userId})");
+                return null;
+            }
+
+            // we now need to decode the users password
+            userAccount.Password = _encryption.DecryptText(userAccount.Password);
 
             return userAccount;
         }

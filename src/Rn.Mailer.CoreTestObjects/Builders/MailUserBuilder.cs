@@ -24,7 +24,14 @@ namespace Rn.Mailer.CoreTestObjects.Builders
 
             return this;
         }
-        
+
+        public MailUserBuilder WithPassword(string password)
+        {
+            _user.Password = password;
+
+            return this;
+        }
+
         public MailUser Build()
         {
             return _user;

@@ -30,8 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute, Version=1.10.0.0, Culture=neutral, PublicKeyToken=92dd2e9066daa5ca, processorArchitecture=MSIL">
+      <HintPath>..\packages\NSubstitute.1.10.0.0\lib\net45\NSubstitute.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=3.5.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.3.5.0\lib\net45\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Rn.Core, Version=1.0.0.109, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rn.Core.1.0.0.109\lib\net45\Rn.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -48,6 +56,7 @@
     <Compile Include="RnAssert.cs" />
     <Compile Include="Builders\MailUserBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestObjects.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rn.Mailer.Core\Rn.Mailer.Core.csproj">
