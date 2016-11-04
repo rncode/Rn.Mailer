@@ -69,5 +69,14 @@ namespace Rn.Mailer.Core.Models
         /// The owning MailUser for this account
         /// </summary>
         public MailUser User { get; set; }
+
+        /// <summary>
+        /// Returns FALSE if the account has a "SmtpUsername" or "SmtpPassword" value set, otherwise TRUE is returned.
+        /// </summary>
+        /// <returns>boolean</returns>
+        public bool UseDefaultCredentials()
+        {
+            return string.IsNullOrWhiteSpace(SmtpUsername) && string.IsNullOrWhiteSpace(SmtpPassword);
+        }
     }
 }
