@@ -153,6 +153,7 @@
     <Compile Include="Castle\Installers\RepoInstaller.cs" />
     <Compile Include="Castle\Installers\ServiceInstaller.cs" />
     <Compile Include="RnMailClient.cs" />
+    <Compile Include="RnMailClientFactory.cs" />
     <Compile Include="Services\MailAccountService.cs" />
     <Compile Include="Services\TestService.cs" />
     <Compile Include="Castle\Installers\WebApiControllerInstaller.cs" />

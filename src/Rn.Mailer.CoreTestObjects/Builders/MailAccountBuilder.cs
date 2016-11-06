@@ -29,6 +29,13 @@ namespace Rn.Mailer.CoreTestObjects.Builders
             return this;
         }
 
+        public MailAccountBuilder WithId(int id)
+        {
+            _mailAccount.Id = id;
+
+            return this;
+        }
+
         public MailAccountBuilder WithSmtpPassword(string password)
         {
             _mailAccount.SmtpPassword = password;

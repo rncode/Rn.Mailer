@@ -4,13 +4,13 @@ using System.Net.Mail;
 using Rn.Core.Config;
 using Rn.Core.Extensions;
 using Rn.Core.IO;
-using Rn.Mailer.Castle;
+using Rn.Mailer.Core;
 using Rn.Mailer.Core.Interfaces;
 using Rn.Mailer.Core.Models;
 
 namespace Rn.Mailer
 {
-    public class RnMailClient
+    public class RnMailClient : IRnMailClient
     {
         public const string REDIRECT_TO_DISK = "Rn.Mailer.RedirectToDisk";
         public const string DISK_MAIL_FOLDER = "Rn.Mailer.DiskMailFolder";
@@ -35,12 +35,12 @@ namespace Rn.Mailer
         // public methods
         public string GetMailDiskFolderPath()
         {
-            // todo: add tests
             var baseLocation = _webConfig
                 .GetAppSetting(DISK_MAIL_FOLDER, @"c:\mails\")
                 .AppendIfMissing("\\");
 
-            var accountId = _account.Id.ToString("D").PadLeft(5, '0');
+            var accountId = _account.Id.ToString("D")
+                .PadLeft(5, '0');
 
             return $"{baseLocation}{accountId}\\";
         }
@@ -59,37 +59,10 @@ namespace Rn.Mailer
 
             // Set the delivery location for the composed mails
             if (redirectToDisk)
-            {
-                // http://stackoverflow.com/questions/567765/how-can-i-save-an-email-instead-of-sending-when-using-smtpclient
-                client.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
-                client.PickupDirectoryLocation = GetMailDiskFolderPath();
+                ConfigureClientToRedirectMailsToDisk(client);
 
-                // todo: add tests
-                // if we are working with a relative path we need to modify it
-                if (client.PickupDirectoryLocation.StartsWith("~"))
-                {
-                    var root = AppDomain.CurrentDomain.BaseDirectory;
-                    var pickupRoot = client.PickupDirectoryLocation.Replace("~/", root);
-                    pickupRoot = pickupRoot.Replace("/", @"\");
-                    client.PickupDirectoryLocation = pickupRoot;
-                }
-
-                // todo: add tests
-                // ensure that the pickup location exists
-                if (!_directory.Exists(client.PickupDirectoryLocation))
-                {
-                    _logger.Info($"RnMailClient - mail pickup directory not found ({client.PickupDirectoryLocation})," +
-                                 " attempting to create it now");
-
-                    _directory.CreateDirectory(client.PickupDirectoryLocation);
-
-                    _logger.Debug("RnMailClient - successfully created mail pickup directory");
-                }
-            }
-            else
-            {
-                client.EnableSsl = _account.EnableSsl;
-            }
+            // set the SSL bindings for the web client
+            client.EnableSsl = _account.EnableSsl;
 
             // if we don't need credentials we can complete our configuration here
             if (_account.UseDefaultCredentials())
@@ -101,6 +74,35 @@ namespace Rn.Mailer
                 _account.SmtpPassword);
 
             return client;
+        }
+
+        private void ConfigureClientToRedirectMailsToDisk(SmtpClient client)
+        {
+            // http://stackoverflow.com/questions/567765/how-can-i-save-an-email-instead-of-sending-when-using-smtpclient
+            client.DeliveryMethod = SmtpDeliveryMethod.SpecifiedPickupDirectory;
+            client.PickupDirectoryLocation = GetMailDiskFolderPath();
+
+            // if we are working with a relative path we need to modify it
+            if (client.PickupDirectoryLocation.StartsWith("~"))
+            {
+                var root = AppDomain.CurrentDomain.BaseDirectory;
+                var pickupRoot = client.PickupDirectoryLocation
+                    .Replace("~", root);
+
+                pickupRoot = pickupRoot.Replace("/", @"\");
+                client.PickupDirectoryLocation = pickupRoot;
+            }
+
+            // ensure that the pickup location exists
+            if (_directory.Exists(client.PickupDirectoryLocation))
+                return;
+
+            _logger.Info($"RnMailClient - mail pickup directory not found ({client.PickupDirectoryLocation})," +
+                         " attempting to create it now");
+
+            _directory.CreateDirectory(client.PickupDirectoryLocation);
+
+            _logger.Debug("RnMailClient - successfully created mail pickup directory");
         }
     }
 }

@@ -45,6 +45,8 @@
     <Compile Include="Interfaces\Repos\IUserAccountRepo.cs" />
     <Compile Include="Interfaces\Services\IMailAccountService.cs" />
     <Compile Include="Interfaces\Services\IUserAccountService.cs" />
+    <Compile Include="IRnMailClient.cs" />
+    <Compile Include="IRnMailClientFactory.cs" />
     <Compile Include="Models\MailAccount.cs" />
     <Compile Include="Models\MailApiKey.cs" />
     <Compile Include="Models\MailUser.cs" />
