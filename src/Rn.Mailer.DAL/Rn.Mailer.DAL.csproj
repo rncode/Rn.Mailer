@@ -38,6 +38,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rn.Core, Version=1.0.0.108, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rn.Core.1.0.0.108\lib\net45\Rn.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -49,7 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\MailApiKeyEntity.cs" />
+    <Compile Include="Entities\MailAccountEntity.cs" />
+    <Compile Include="Entities\MailUserEntity.cs" />
+    <Compile Include="MailerDbContext.cs" />
+    <Compile Include="MailerDbInitializer.cs" />
+    <Compile Include="MailerDbInitializerHelper.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repos\MailAccountRepo.cs" />
+    <Compile Include="Repos\UserAccountRepo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rn.Mailer.Core\Rn.Mailer.Core.csproj">
